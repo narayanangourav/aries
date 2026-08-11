@@ -81,6 +81,39 @@ Preview the production build:
 npm run preview
 ```
 
+## Run with Podman or Docker
+
+Build and start the production container with Podman Compose:
+
+```bash
+podman compose up --build
+```
+
+Or use Docker Compose with the same configuration:
+
+```bash
+docker compose up --build
+```
+
+Open the containerized application at:
+
+```text
+http://localhost:8080/aries/
+```
+
+Stop and remove the Compose workload:
+
+```bash
+podman compose down
+```
+
+To build and run without Compose:
+
+```bash
+podman build -t localhost/aries-resume-ats:latest .
+podman run --rm -p 8080:8080 localhost/aries-resume-ats:latest
+```
+
 ## Gemini API Key
 
 Aries needs a Gemini API key only for the **Generate suggestions** feature. The ATS score and keyword matching work without an API key.
