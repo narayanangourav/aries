@@ -114,6 +114,24 @@ podman build -t localhost/aries-resume-ats:latest .
 podman run --rm -p 8080:8080 localhost/aries-resume-ats:latest
 ```
 
+## Published container packages
+
+Each GitHub Pages workflow run also publishes a container image to GitHub
+Container Registry in a separate package job. Tags use the Asia/Kolkata build
+date and a daily sequence number:
+
+```text
+ghcr.io/narayanangourav/aries:YYYYMMDD-NN
+```
+
+For example, the first two builds on August 12, 2026 are tagged
+`20260812-01` and `20260812-02`. The sequence starts again at `01` on the next
+day. Pull a specific immutable build with:
+
+```bash
+podman pull ghcr.io/narayanangourav/aries:20260812-01
+```
+
 ## Gemini API Key
 
 Aries needs a Gemini API key only for the **Generate suggestions** feature. The ATS score and keyword matching work without an API key.
